@@ -1,0 +1,97 @@
+Veri analizi gün geçtikçe daha karmaşık hale geliyor ve araştırmacılar bu veri setlerindeki ilişkileri anlamak için çeşitli araçlara ihtiyaç duyuyorlar. Bu yazıda Python kullanarak oluşturulan bir dizi veri seti üzerinden Correlation analizi yapacağız. Kodu anlamak ve sonuçları yorumlamak için adım adım ilerleyeceğiz.
+
+İlk başta Veri Seti oluşturacağız ve sahip olduğu özellikleri inceleyeceğiz.
+{
+import random
+import matplotlib.pyplot as plt
+
+# İlk veri seti
+x1 = [random.randint(20, 60) for _ in range(20)]
+y1 = [random.randint(50, 100) for _ in range(20)]
+plt.scatter(x1, y1, marker='x')
+calculate_r(x1, y1)
+
+# İkinci veri seti
+x2 = [i + random.randint(1, 4) for i in range(20)]
+y2 = [i + random.randint(1, 4) for i in range(20)]
+plt.scatter(x2, y2, marker='x')
+calculate_r(x2, y2)
+
+# Üçüncü veri seti
+x3 = [random.randint(1, 100) for _ in range(20)]
+y3 = x3
+plt.scatter(x3, y3, marker='x')
+calculate_r(x3, y3)
+
+# Dördüncü veri seti
+x4 = [random.randint(1, 100) for _ in range(20)]
+y4 = [2 * i for i in x4]
+plt.scatter(x4, y4, marker='x')
+calculate_r(x4, y4)
+
+# Beşinci veri seti
+x5 = [random.randint(1, 100) for _ in range(20)]
+y5 = [i + 5 for i in x5]
+plt.scatter(x5, y5, marker='x')
+calculate_r(x5, y5)
+
+# Altıncı veri seti
+x6 = [random.randint(1, 100) for _ in range(20)]
+y6 = [20 * i + 5 for i in x6]
+plt.scatter(x6, y6, marker='x')
+calculate_r(x6, y6)
+}
+
+
+
+Correlation Analizi Fonksiyonu:
+Her veri seti için Correlation katsayısını hesaplamak için bir fonksiyon kullanıyoruz. Bu fonksiyon iki değişken arasındaki ilişkiyi Pearson Correlation katsayısı ile ölçer.
+
+
+
+Örneklerle Correlation Analizi:
+1 -  Zayıf Pozitif Correlation:
+İlk veri setinde, x ve y değerleri arasında rasgele bir dağılım gözlemlenir. Correlation katsayısı, yaklaşık olarak 0.1 civarındadır, bu da zayıf bir pozitif ilişki olduğunu gösterir.
+x1 = [random.randint(20, 60) for _ in range(20)]
+y1 = [random.randint(50, 100) for _ in range(20)]
+plt.scatter(x1, y1, marker='x')
+calculate_r(x1, y1)
+
+2 - Güçlü Pozitif Correlation:
+İkinci veri setinde, x ve y değerleri arasında artan bir lineer ilişki vardır. Correlation katsayısı, 0.9'a yaklaşır, bu da güçlü bir pozitif lineer ilişki olduğunu gösterir.
+x2 = [i + random.randint(1, 4) for i in range(20)]
+y2 = [i + random.randint(1, 4) for i in range(20)]
+plt.scatter(x2, y2, marker='x')
+calculate_r(x2, y2)
+
+3 - Neredeyse Mükemmel Pozitif Korelasyon:
+Üçüncü veri setinde, x ve y değerleri arasında neredeyse mükemmel bir pozitif lineer ilişki vardır. Bu durumda, x ve y değerleri arasındaki korelasyon katsayısı yaklaşık olarak 1'e çok yakındır.
+x3 = [random.randint(1, 100) for _ in range(20)]
+y3 = x3
+plt.scatter(x3, y3, marker='x')
+calculate_r(x3, y3)
+
+4 - Pozitif Lineer İlişki:
+Dördüncü veri setinde, x ve y değerleri arasında bir pozitif lineer ilişki vardır, ancak bu öncekilerden daha az güçlüdür.
+x4 = [random.randint(1, 100) for _ in range(20)]
+y4 = [2 * i for i in x4]
+plt.scatter(x4, y4, marker='x')
+calculate_r(x4, y4)
+
+5 - Pozitif, Ancak Daha Zayıf Lineer İlişki:
+Beşinci veri setinde, x ve y değerleri arasında pozitif bir lineer ilişki vardır, ancak bu sefer daha zayıftır.
+x5 = [random.randint(1, 100) for _ in range(20)]
+y5 = [i + 5 for i in x5]
+plt.scatter(x5, y5, marker='x')
+calculate_r(x5, y5)
+
+6 - Pozitif Lineer İlişki, Ancak Yatay Kayma:
+Son veri setinde, x ve y değerleri arasında pozitif bir lineer ilişki vardır, ancak bu sefer yatay bir kayma (offset) bulunmaktadır.
+x6 = [random.randint(1, 100) for _ in range(20)]
+y6 = [20 * i + 5 for i in x6]
+plt.scatter(x6, y6, marker='x')
+calculate_r(x6, y6)
+
+
+
+Sonuç olarak Python kullanarak oluşturulan veri setleri üzerinden Correlation analizi yapmak, ilişkileri daha iyi anlamak için önemli bir adımdır. Ancak Correlation katsayısı sadece lineer ilişkileri ölçer ve nedensellik ilişkilerini belirlemez. Bu nedenle analizlerimizi dikkatli bir şekilde yürütmek ve Correlation sonuçlarını diğer analiz yöntemleriyle desteklemek önemlidir.
